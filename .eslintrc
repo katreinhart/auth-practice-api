@@ -1,0 +1,22 @@
+{
+  "extends": "airbnb",
+  "parserOptions": {
+    "ecmaVersion": 6
+  }, 
+  "env": {
+    "node": true,
+    "browser": true,
+    "es6": true
+  },
+  "rules": {
+    "semi": ["warn", "never"],
+    "no-unused-vars": ["error", {
+      "vars": "local",
+      "args": "none"
+    }],
+    "arrow-parens": ["error", "as-needed"],
+    "quotes": ["warn", {
+      "allowTemplateLiterals": true
+    }]
+  }
+}
