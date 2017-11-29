@@ -8,7 +8,6 @@ class Token {
     const sub = { id, email }
     const expiresIn = '1 week'
     const token = sign({ sub, expiresIn }, secret)
-    console.log(token)
     return token
   }
 

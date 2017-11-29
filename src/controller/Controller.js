@@ -7,7 +7,6 @@ module.exports = name => {
   const Model = require(`../model/${modelName}`)
 
   class Controller {
-    constructor () {}
 
     static index (req, res, next) {
       return Model.index()

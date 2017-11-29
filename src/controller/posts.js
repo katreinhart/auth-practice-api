@@ -3,6 +3,7 @@ const fields = ['post_title', 'post_content', 'post_author']
 
 class PostsController extends Controller {
   static complete(req, res, next) {
+    console.log(req.body)
     const errors = []
     fields.forEach(field => {
       if(!req.body.hasOwnProperty(field)) errors.push(`${field} is required`)
