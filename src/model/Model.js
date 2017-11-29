@@ -7,7 +7,6 @@ module.exports = (tableName) => {
     }
 
     static show(id) {
-      console.log('show')
       return db(tableName).where({ id }).first()
     }
 
@@ -19,6 +18,9 @@ module.exports = (tableName) => {
       return db(tableName).where({ id }).update(body).returning('*')
     }
 
+    static delete(id) {
+      return db(tableName).where({ id }).returning('*').del()
+    }
   }
 
   return Model
