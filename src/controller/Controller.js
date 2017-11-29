@@ -16,11 +16,13 @@ module.exports = name => {
 
     static exists (req, res, next) {
       return Model.show(req.params.id)
-      .then(response => {
-        if(!response) next({ status: 404 })
-        else next()
-      })
-      .catch(next)
+        .then(response => {
+          if(!response) next({ status: 404 })
+          else {
+            next()
+          }
+        })
+        .catch(next)
     }
 
     static show (req, res, next) {
