@@ -11,6 +11,8 @@ app.use(bodyParser.json())
 
 app.use('/auth', require('./src/routes/auth'))
 
+app.use('/api/posts', require('./src/routes/posts.routes'))
+
 app.use((err, req, res, next) => {
   const status = err.status || 500
   res.status(status).json({ error: err })
