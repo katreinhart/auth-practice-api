@@ -15,6 +15,20 @@ module.exports = name => {
         .then(response => res.status(200).json({ [pluralize(name)]: response }))
         .catch(next)
     }
+
+    static show (req, res, next) {
+      console.log(`show ${singular} with ${req.params.id}`)
+      return Model.show(req.params.id)
+        .then(response => res.status(200).json({ [pluralize.singular(name)]: response }))
+        .catch(next)
+    }
+
+    static create (req, res, next) {
+      console.log(`create ${singular} with ${req.body}`)
+      return Model.create(body)
+        .then(response => res.status(200).json({ [pluralize.singular(name)]: response }))
+        .catch(next)
+    }
   }
 
   return Controller
