@@ -1,2 +1,2 @@
-# Basic REST API 
-  by Kat Reinhart
+# Authorization API 
+
