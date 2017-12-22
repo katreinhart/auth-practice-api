@@ -10,7 +10,6 @@ class User extends Model {
       .then(user => {
         if(user) throw new Error()
         const passhash = bcrypt.hashSync(password, 8)
-
         return User.create({ email, passhash })
       })
       .catch(() => { throw new Error('User signup failed') })

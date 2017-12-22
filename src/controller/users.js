@@ -18,18 +18,20 @@ class UsersController extends Controller {
   }
 
   static isLoggedIn (req, res, next) {
-    const bearer = req.headers.authorization.split(' ')[1]
-    Token.parseTokenFromBearerAsync(bearer).then(result => {
-      next()
-    }).catch(err => next({ error: 403 }))
+    Token.parseTokenFromBearerAsync(req.headers.authorization)
+      .then(result => {
+        next()
+      })
+      .catch(err => next({ error: 403 }))
   }
 
   static setPostOwnership(req, res, next) {
-    const bearer = req.headers.authorization.split(' ')[1]
-    Token.parseTokenFromBearerAsync(bearer).then(result => {
-      req.body.post_author = result.sub.id
-      next()
-    }).catch(err => next({ error: 403 }))
+    Token.parseTokenFromBearerAsync(req.headers.authorization)
+      .then(result => {
+        req.body.post_author = result.sub.id
+        next()
+      })
+      .catch(err => next({ error: 403 }))
   }
 }
 

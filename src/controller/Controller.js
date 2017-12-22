@@ -3,14 +3,14 @@ const pluralize = require('pluralize')
 
 module.exports = name => {
   const singular = pluralize.singular(name)
+  const plural = pluralize(name)
   const modelName = capitalize(singular)
   const Model = require(`../model/${modelName}`)
 
   class Controller {
-
     static index (req, res, next) {
       return Model.index()
-        .then(response => res.status(200).json({ [pluralize(name)]: response }))
+        .then(response => res.status(200).json({ [plural]: response }))
         .catch(next)
     }
 
@@ -27,25 +27,25 @@ module.exports = name => {
 
     static show (req, res, next) {
       return Model.show(req.params.id)
-        .then(response => res.status(200).json({ [pluralize.singular(name)]: response }))
+        .then(response => res.status(200).json({ [singular]: response }))
         .catch(next)
     }
 
     static create (req, res, next) {
       return Model.create(req.body)
-        .then(response => res.status(200).json({ [pluralize.singular(name)]: response[0] }))
+        .then(response => res.status(200).json({ [singular]: response[0] }))
         .catch(next)
     }
 
     static update (req, res, next) {
       return Model.update(req.params.id, req.body)
-        .then(response => res.status(200).json({ [pluralize.singular(name)]: response[0] }))
+        .then(response => res.status(200).json({ [singular]: response[0] }))
         .catch(next)
     }
 
     static delete (req, res, next) {
       return Model.delete(req.params.id)
-        .then(response => res.status(200).json({ [pluralize.singular(name)]: response[0] }))
+        .then(response => res.status(200).json({ [singular]: response[0] }))
         .catch(next)
     }
   }
